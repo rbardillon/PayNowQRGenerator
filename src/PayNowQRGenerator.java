@@ -62,9 +62,21 @@ public class PayNowQRGenerator {
 
             // Decode Base64 image
             byte[] imageBytes = Base64.getDecoder().decode(response.getImageStream());
-            String fileName = "PayNowQR_Result" + ".png";
-            Path outputPath = Paths.get(System.getProperty("user.dir"), fileName);
+            // Define target folder and file name
+            String outputFolder = "E:\\Infor\\PayNow\\QR_Result";
+            String fileName = "PayNowQR_Result.png";
+
+            // Create the path
+            Path outputPath = Paths.get(outputFolder, fileName);
+
+            // Make sure the directory exists
+            Files.createDirectories(Paths.get(outputFolder));
+
+            // Write the QR image
             Files.write(outputPath, imageBytes);
+
+            System.out.println("✅ QR Code saved at: " + outputPath.toAbsolutePath());
+
 
             System.out.println("QR Code saved at: " + outputPath.toAbsolutePath());
         } catch (Exception e) {
