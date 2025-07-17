@@ -3,6 +3,7 @@ import com.dbs.sgqr.generator.QRGeneratorImpl;
 import com.dbs.sgqr.generator.io.*;
 
 import java.awt.*;
+import java.io.File;
 import java.nio.file.*;
 import java.util.Base64;
 
@@ -22,7 +23,13 @@ public class PayNowQRGenerator {
 
             // QR code color: PayNow purple
             // Add the PayNow logo in the center
-            String logoPath = "src/PayNow.png"; // Update this if your logo is in another folder
+            File logoFile = new File("src/PayNow.png");
+            if (!logoFile.exists()) {
+                System.err.println("Logo file not found at: " + logoFile.getAbsolutePath());
+                return;
+            }
+            String logoPath = logoFile.getAbsolutePath();
+
             QRDimensions qrDetails = qrGenerator.getQRDimensions(500, 500, Color.decode("#7C1A78"), logoPath);
 
 
@@ -59,7 +66,7 @@ public class PayNowQRGenerator {
             Path outputPath = Paths.get(System.getProperty("user.dir"), fileName);
             Files.write(outputPath, imageBytes);
 
-            System.out.println("✅ QR Code saved at: " + outputPath.toAbsolutePath());
+            System.out.println("QR Code saved at: " + outputPath.toAbsolutePath());
         } catch (Exception e) {
             e.printStackTrace();
         }
