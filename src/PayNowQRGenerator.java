@@ -22,7 +22,7 @@ public class PayNowQRGenerator {
 
             // QR code color: PayNow purple
             // Add the PayNow logo in the center
-            String logoPath = "C:\\Users\\rbardillon\\IdeaProjects\\PayNowQRProject\\src\\PayNow.png"; // Update this if your logo is in another folder
+            String logoPath = "src/PayNow.png"; // Update this if your logo is in another folder
             QRDimensions qrDetails = qrGenerator.getQRDimensions(500, 500, Color.decode("#7C1A78"), logoPath);
 
 
@@ -55,7 +55,7 @@ public class PayNowQRGenerator {
 
             // Decode Base64 image
             byte[] imageBytes = Base64.getDecoder().decode(response.getImageStream());
-            String fileName = "PayNowQR_" + paymentReference.replaceAll("[^a-zA-Z0-9]", "_") + ".png";
+            String fileName = "PayNowQR_Result" + ".png";
             Path outputPath = Paths.get(System.getProperty("user.dir"), fileName);
             Files.write(outputPath, imageBytes);
 
