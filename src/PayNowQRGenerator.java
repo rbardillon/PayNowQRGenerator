@@ -23,7 +23,7 @@ public class PayNowQRGenerator {
 
             // QR code color: PayNow purple
             // Add the PayNow logo in the center
-            File logoFile = new File("src/PayNow.png");
+            File logoFile = new File("E:\\Infor\\PayNow\\PayNow.png");
             if (!logoFile.exists()) {
                 System.err.println("Logo file not found at: " + logoFile.getAbsolutePath());
                 return;
