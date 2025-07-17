@@ -75,9 +75,6 @@ public class PayNowQRGenerator {
             // Write the QR image
             Files.write(outputPath, imageBytes);
 
-            System.out.println("✅ QR Code saved at: " + outputPath.toAbsolutePath());
-
-
             System.out.println("QR Code saved at: " + outputPath.toAbsolutePath());
         } catch (Exception e) {
             e.printStackTrace();
